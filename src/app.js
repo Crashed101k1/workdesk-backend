@@ -45,6 +45,11 @@ app.use(cors({
       return callback(null, true);
     }
     
+    // Permitir cualquier dominio de Vercel (preview deployments)
+    if (origin.includes('vercel.app')) {
+      return callback(null, true);
+    }
+    
     callback(new Error('CORS not allowed'));
   },
   credentials: true,
